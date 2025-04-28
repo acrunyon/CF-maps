@@ -19,7 +19,7 @@ library(gridExtra)
 library(ggpubr)
 
 rm(list=ls())
-SiteID <- "POHE"
+SiteID <- "NOCO"
 
 CF.folders <- "D:/RCF_2024/RCF_opened/"
 OutDir <- "C:/Users/arunyon/DOI/CCRP COLLABORATE! - CCRP COLLABORATE!/01 PROJECT Collaboration/Science, Adaptation, Planning/Exposure reports/maps"
@@ -57,7 +57,7 @@ Tercek <- (CF.GCM$GCM %in% Tercek.WB)
 
 # nps_boundary <- sf::st_read('C:/Users/arunyon/3D Objects/Local-files/Git-repos/CCRP_automated_climate_futures/data/general/spatial-data/nps_boundary/nps_boundary.shp')
 # park <- filter(nps_boundary, UNIT_CODE == SiteID)
-park <- sf::st_read("C:/Users/arunyon/OneDrive - DOI/Documents/GIS/POHE/POHE_Trail_Centerline_2024/POHE_dissolve.shp")
+park <- sf::st_read("C:/Users/arunyon/OneDrive - DOI/Documents/GIS/North_Country_Trail/North_Country_Trail_(Public).shp")
 huc8 <- sf::st_read("C:/Users/arunyon/OneDrive - DOI/Documents/GIS/huc8_conus/HUC8_CONUS/HUC8_US.shp")
 # huc8 <- st_transform(huc8, crs(park))
 p <- st_transform(park,st_crs(huc8))
@@ -67,7 +67,7 @@ b<- sf::st_is_within_distance(p,h,10)
 
 buff <- h[b[[1]],]
 
-buff <- sf::st_read("C:/Users/arunyon/OneDrive - DOI/Documents/GIS/POHE/POHE_Trail_Centerline_2024/POHE_HUC8.shp")
+buff <- sf::st_read("C:/Users/arunyon/OneDrive - DOI/Documents/GIS/North_Country_Trail/NOCO_HUC8.shp")
 ggplot() +
   geom_sf(data = buff) +
   geom_sf(data = p) 
